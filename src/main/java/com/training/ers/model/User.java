@@ -8,7 +8,7 @@ public class User {
 	private String username;
 	private String password;
 	private String gender;
-	private String notifcations;
+	private String notifications;
 	private String qualification;
 	
 	
@@ -16,24 +16,17 @@ public class User {
 		super();
 	}
 
-
-	public User(int userId, String username, String password, String gender, String notifcations,
+	public User(int userId, String username, String password, String gender, String notifications,
 			String qualification) {
 		super();
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
 		this.gender = gender;
-		this.notifcations = notifcations;
+		this.notifications = notifications;
 		this.qualification = qualification;
 	}
 
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(gender, notifcations, password, qualification, userId, username);
-	}
-	
 
 	public int getUserId() {
 		return userId;
@@ -75,13 +68,13 @@ public class User {
 	}
 
 
-	public String getNotifcations() {
-		return notifcations;
+	public String getNotifications() {
+		return notifications;
 	}
 
 
-	public void setNotifcations(String notifcations) {
-		this.notifcations = notifcations;
+	public void setNotifications(String notifications) {
+		this.notifications = notifications;
 	}
 
 
@@ -96,6 +89,12 @@ public class User {
 
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(gender, notifications, password, qualification, userId, username);
+	}
+
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -104,7 +103,7 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(gender, other.gender) && Objects.equals(notifcations, other.notifcations)
+		return Objects.equals(gender, other.gender) && Objects.equals(notifications, other.notifications)
 				&& Objects.equals(password, other.password) && Objects.equals(qualification, other.qualification)
 				&& userId == other.userId && Objects.equals(username, other.username);
 	}
@@ -113,9 +112,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", gender=" + gender
-				+ ", notifcations=" + notifcations + ", qualification=" + qualification + "]";
+				+ ", notifications=" + notifications + ", qualification=" + qualification + "]";
 	}
-	
-	
+
 
 }

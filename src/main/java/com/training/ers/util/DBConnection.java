@@ -14,7 +14,7 @@ public class DBConnection {
 		
 		Connection con = null;
 		try {
-			FileReader rdr = new FileReader("/Users/sephtecs/Documents/alstrom-ers-revature/mydb.properties");
+			FileReader rdr = new FileReader("/Users/sephtecs/Documents/alstrom-2/mydb.properties");
 			Properties properties = new Properties();
 			properties.load(rdr);
 			String driver = properties.getProperty("driver");

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.training.ers.model.User;
 import com.training.ers.util.DBConnection;
@@ -21,7 +24,7 @@ public class LoginDAOImpl implements LoginDAO{
 			statement.setString(1, user.getUsername());
 			statement.setString(2, user.getPassword());
 			statement.setString(3, user.getGender());
-			statement.setString(4, user.getNotifcations());
+			statement.setString(4, user.getNotifications());
 			statement.setString(5, user.getQualification());
 
 			rows = statement.executeUpdate();
@@ -53,6 +56,58 @@ public class LoginDAOImpl implements LoginDAO{
 			e.printStackTrace();
 		}
 		return userValid;
+	}
+
+	@Override
+	public List<User> getUsers() {
+		System.out.println("##Printing all users  ");
+		List<User> users = new ArrayList<User>();
+
+		Statement stat;
+		try {
+			stat = connection.createStatement();
+			ResultSet res = stat.executeQuery("select * from userss");
+			while (res.next()) {
+				User user = new User();
+				user.setUserId(res.getInt(1));
+				user.setUsername(res.getString(2));
+				user.setPassword(res.getString(3));
+				user.setGender(res.getString(4));
+				user.setNotifications(res.getString(5));
+				user.setQualification(res.getString(6));
+				users.add(user);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
+	
+		@Override
+		public List<User> getUsersByUserName(String username) {
+			System.out.println("##Printing search users  ");
+			List<User> users = new ArrayList<User>();
+
+			Statement stat;
+			try {
+				stat = connection.createStatement();
+				ResultSet res = stat.executeQuery("select * from userss where username = '"+username+"'");
+				while (res.next()) {
+					User user = new User();
+					user.setUserId(res.getInt(1));
+					user.setUsername(res.getString(2));
+					user.setPassword(res.getString(3));
+					user.setGender(res.getString(4));
+					user.setNotifications(res.getString(5));
+					user.setQualification(res.getString(6));
+					users.add(user);
+
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return users;
 	}
 
 }

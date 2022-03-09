@@ -26,7 +26,9 @@
 <!-- 	<h1>Login Page</h1>
 	<hr /> -->
 	<h2 class="notes">Welcome to the Login page!</h2>
-	<form class="form-style" action="LoginController" onsubmit="return validate()" method="post">
+	<form class="form-style" action="LoginController" 
+	onsubmit="return validate()" 
+	method="post">
 		<table>
 			<tr>
 				<td><label> Username: </label></td>
@@ -35,7 +37,7 @@
 			<tr>
 				<td><label> Password: </label></td>
 				<td><input type="password" name="password" id="password">
-					<input type="submit" value="Sign in"> 
+					<input type="submit" value="Sign in" id="btnSubmit"> 
 					</td>
 			</tr>
 		</table>
