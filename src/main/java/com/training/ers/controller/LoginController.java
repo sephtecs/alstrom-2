@@ -1,5 +1,6 @@
 package com.training.ers.controller;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -17,6 +18,7 @@ import com.training.ers.dao.LoginDAOImpl;
  * Servlet implementation class LoginController
  */
 public class LoginController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -38,6 +40,7 @@ public class LoginController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
@@ -55,8 +58,10 @@ public class LoginController extends HttpServlet {
 		// Why need a boolean? To check whether it's correct or not?
 		boolean result = loginDAO.validate(uname, pwd);
 		
+		//updated few lines of code
 		// If check
 		if(result) {
+
 			session.setAttribute("message", "Valid User");
 			
 			out.println("<h1>Welcome :" + uname);
@@ -64,6 +69,7 @@ public class LoginController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
 			dispatcher.include(request, response);
 		} else {
+
 			session.setAttribute("message", "Invalid User");
 			out.println("<h1>Your username/password is incorrect, Please <a href=login.html>login</a> again");
 		}
